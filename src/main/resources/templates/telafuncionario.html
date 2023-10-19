@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PURGATO</title>
+    <link rel="stylesheet" href="/css/cliente.css" />
+    <link rel="icon" type="image/png" href="/imagens/purgatologo.png">
+    <link rel="shortcut icon" href="PURGATO_SITELOGO.PNG" type="image">
+    <script src="https://kit.fontawesome.com/d7b8ac981d.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+         <nav>
+      <div class="user">
+        <h1><i class="fa-solid fa-user" style="color: #ffffff"></i> - <span th:text="${session.mUsuario.nivel_acesso}"></span> </h1>
+        <p><h6> <span th:text="${session.mUsuario.nome}"></span></h6></p>
+        </div>
+            <div class="lista">
+			<ul>
+				<li>
+					<a th:href="@{/api/login/telainicial}"><i class="fa-sharp fa-solid fa-house"
+							style="color: #ffffff"></i> Início</a>
+				</li>
+				<li>
+					<a th:href="@{/api/cliente/telacliente}"><i class="fa-solid fa-user" style="color: #ffffff"></i>
+						Clientes</a>
+				</li>
+				<li>
+					<a th:href="@{/api/Maquinas/telaalugueis}"><i class="fa-solid fa-wand-magic-sparkles"
+							style="color: #ffffff"></i> Aluguéis</a>
+				</li>
+				<li>
+					<a th:href="@{/api/usuario/telafuncionario}"><i class="fa-solid fa-user-group"
+							style="color: #ffffff"></i> Funcionários</a>
+				</li>
+				<li>
+					<a th:href="@{/api/promocao/telapromocoes}"><i class="fa-solid fa-star"
+							style="color: #ffffff;"></i></i> Promoções</a>
+				</li>
+				<li>
+					<div class="ultima">
+						<a th:href="@{/api/login/index}"><i class="fa-solid fa-right-to-bracket"
+								style="color: #ffffff;"></i> Sair</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+    </nav>
+    <div class="container">
+      <label> Funcionário </label> 
+      <button type="button">
+      <a th:href="@{/api/usuario/cadastrofuncionario}"><i class="fa-sharp fa-solid fa-user-plus" style="color: #ffffff"></i>  Cadastrar Funcionário</a>
+      </button>
+  
+      	<div class="cards">
+  		<table class="tablestyle" id="tablestyle">
+		  <thead>
+		    <tr>
+		      <th >ID</th>
+		      <th >Nome</th>
+		      <th >CPF</th>
+		      <th >Email</th>
+		      <th >Nível de acesso</th>
+		      <th >Status</th>
+		      <th>Excluir</th>
+			  <th>Editar</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tbody>
+				<tr th:each="usuario : ${usuarios}">
+					<td th:text="${usuario.id}"></td>
+					<td th:text="${usuario.nome}"></td>
+					<td th:text="${usuario.cpf}"></td>
+					<td th:text="${usuario.email}"></td>
+					<td th:text="${usuario.nivel_acesso}"></td>
+					<td th:text="${usuario.status_Func}"></td>
+					<td>
+	<form th:action="@{/api/usuario/controleUsuario/{id}(id=${usuario.id})}"  method="post">    
+	
+		                    <button  type="submit" class="estiloBotao">
+		
+		                    <i class="fas fa-times tamIcone"></i>
+		
+		                    </button>
+		
+	                    </form>
+					</td> 
+					<td> 
+					<button class="botaoAbrirMenu" th:id="${usuario.id}" >
+
+                                    <i class="fas fa-pencil-alt tamIcone"></i>
+
+                                </button>
+					</td>     
+				</tr>
+				
+			</tbody>
+		</table>
+	<div>
+	</div>
+</div>
+</div>
+<!-- Botão para abrir o modal -->
+
+<div id="myModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close-button" id="closeModalButton">&times;</span>
+
+        <div class="modal-title">Perfil do Usuario</div>
+
+     	<form th:action="@{/api/usuario/Adm}"  th:object="${usuario}" method="post">  
+
+            <div class="input-area">
+
+                    <div class="credenciais">
+
+                        <div class="lado1">
+             
+  <input type="hidden" id="editId" name="id" th:field="*{id}" placeholder="Nome de usuário" style="display: none;" required>
+
+                                      <p class="textUpadte">Nome do usuário: </p>
+
+                            <input type="text" id="editNome" name="nome" th:field="*{nome}"  class="campoDeFormulario" required><br>
+                            
+                            
+                            
+                            <p class="textUpadte">CPF: </p>
+
+                            <input type="text" id="editCpf" name="cpf" th:field="*{cpf}"  class="campoDeFormulario" ><br>
+
+     
+                            <p class="textUpadte">Status do funcionário: </p>
+
+                            <input type="text" id="editStatus_Func" name="status_Func" th:field="*{status_Func}"  class="campoDeFormulario" ><br>
+
+                       
+
+                        </div>
+
+                       
+
+                        <div class="lado2">
+                        
+                        
+                                      <p class="textUpadte">Email: </p>
+
+                            <input type="email" id="editEmail" name="email" th:field="*{email}"  class="campoDeFormulario" required><br>
+                            
+                            
+                            
+                            <p class="textUpadte">Senha: </p>
+
+                            <input type="text" id="editSenha" name="senha" th:field="*{senha}"  class="campoDeFormulario" ><br>
+
+     
+                            <p class="textUpadte">Nivel de acesso: </p>
+
+                            <input type="text" id="editNivel_acesso" name="nivel_acesso" th:field="*{nivel_acesso}"  class="campoDeFormulario" ><br>
+
+                       
+ 	
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-area">
+
+                <button id="cancelButton" type="button">Cancelar</button>
+
+                <button id="saveButton" type="submit">Salvar</button>
+
+            </div>
+
+        </form>
+
+	</div>
+</div>
+<script th:inline="javascript">
+
+console.log("aqui")
+var openModalButtons = document.querySelectorAll(".botaoAbrirMenu");
+
+var modal = document.getElementById("myModal");
+
+openModalButtons.forEach(function(button) {
+
+    button.onclick = function() {
+
+   
+
+    var usuarios = /*[[${usuarios}]]*/[];
+
+    var idUsuario = button.getAttribute("id")  
+
+	var editId = document.getElementById("editId");
+
+    var editNome = document.getElementById("editNome");
+
+    var editCpf = document.getElementById("editCpf");
+
+
+
+   
+
+ 
+
+    // Supondo que 'usuarios' seja um array de objetos de usuario
+	
+        for (var i = 0; i < usuarios.length; i++) {
+
+            var usuario = usuarios[i];
+
+            console.log(idUsuario);
+
+ 
+
+
+            // Aqui, 'usuario' é um objeto que representa um usuario individual
+
+            // Você pode acessar as propriedades do usuario, por exemplo:
+
+            var id = usuario.id
+
+            var nome = usuario.nome;
+
+            var email = usuario.email;
+
+            var cpf = usuario.cpf;
+            
+            var senha = usuario.senha;
+            
+            var nivel_acesso = usuario.nivel_acesso;
+
+            var status_Func = usuario.status_Func;
+
+            if(idUsuario == usuario.id){
+				
+				editId.value = id;
+
+                editNome.value = nome;
+
+                editEmail.value = email;
+
+                editCpf.value = cpf;
+
+                editSenha.value = senha;
+                
+                editNivel_acesso.value = nivel_acesso;
+
+                editStatus_Func.value = status_Func;
+
+
+            }
+
+            // Faça o que você precisa com os dados do usuario dentro do loop
+
+       
+           
+
+          
+
+
+
+         
+
+           
+
+        }
+
+    // Faça uma solicitação AJAX para buscar informações do usuario com o ID
+
+   
+
+    modal.style.display = "block";
+
+    console.log("a")    
+
+    }
+
+});
+
+ 
+
+ 
+
+ 
+
+ 
+
+     // Função para fechar o modal
+
+document.getElementById("closeModalButton").onclick = function() {
+
+    modal.style.display = "none";
+
+}
+
+ 
+
+// Função para cancelar
+
+document.getElementById("cancelButton").onclick = function() {
+
+    modal.style.display = "none";
+
+}
+
+ 
+
+
+ 
+
+ 
+
+var modalContent = document.querySelector(".modal-content");
+
+ 
+
+// Quando o usuário clicar fora do modal, feche-o
+
+modal.addEventListener("click", function(event) {
+
+    if (event.target === modal) {
+
+        modal.style.display = "none";
+
+    }
+
+});
+</script> -->
+</body>
+
+</html>

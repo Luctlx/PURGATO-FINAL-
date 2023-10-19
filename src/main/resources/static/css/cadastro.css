@@ -1,0 +1,299 @@
+* {
+    margin: 0;
+    font-family:sans-serif
+    }
+
+      body {
+	background-image: url(/imagens/purgatologo.png) ;
+	background-repeat: no-repeat; 
+	background-position: right 10% top 20%;
+    background-color: white;
+    background-attachment: fixed;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    }
+
+
+    .user {
+    font-family: sans-serif;
+    position: relative;
+    margin: 10px 0 0 18px;
+    }
+
+  nav {
+    height: 100%;
+    max-width: 227px;
+    background-color: #415E86;
+    color: aliceblue;
+    position: fixed;
+    }
+
+	nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    top: 150px;
+    font-size: 28px;
+    }
+    nav ul li {
+    background-color: #415E86;
+    border-top: 2px solid aliceblue;
+    }
+
+
+     nav ul li :hover {
+    background-color: #7a96af;
+    box-shadow: 0px 0px 10px rgb(166, 185, 202);
+    }
+
+    nav ul li a {
+    background-color: #415E86;
+    padding: 10px;
+    display: block;
+    color: #f0f8ff;
+    text-decoration: none;
+    }
+
+    .ultima {
+    border-bottom: 2px solid aliceblue;
+    }
+
+    .container{
+    border-radius: 5px;
+    height: 860px;
+    width: 800px;
+    position: relative;
+    left: 280px;
+    top: 100px;
+    }
+
+    input {
+    padding: 3px;
+    border-radius: 5px;
+    width: 750px;
+    border-color: #7a96af;
+    position: relative;
+    left: 10px;
+    font-size: 19px;  
+    }
+
+    label{
+    font-size: 20px;
+    position: relative ;
+    left: 15px;
+    color: rgb(0, 0, 64);
+    }
+
+    input::placeholder {
+    font-size: 19px;
+    }
+
+    .tabela {
+    padding: 2px;
+    background-color: #000000;
+    color: #f0f8ff;
+    width: 770px;
+    height: 18px;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    display: flex;
+    justify-content: space-between;
+    }
+
+.container_form {
+	
+    width: 700px;
+    position: relative;
+    left: 280px;
+    
+}
+
+ input:hover {
+    box-shadow: 0px 0px 10px rgb(166, 185, 202);
+  }
+  
+   input:focus {
+   outline: none;
+   box-shadow: 0px 0px 10px rgb(166, 185, 202);
+}
+  
+
+.container_form2 {
+	
+    width: 700px;
+    position: relative;
+    left: 280px;
+    top: 20px;
+    
+}
+
+.container_form2 h1 {
+    
+    font-size: 3em;
+    color: #415E86;
+    border-bottom: 1px #f0eded solid;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container_form h1 {
+    
+    font-size: 3em;
+    color: #415E86;
+    border-bottom: 1px #f0eded solid;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+.form_grupo {
+    width: 100%;
+    margin: 10;
+    margin-bottom: 30px;
+    position: center;
+}
+
+/* SUBMIT */
+.submit { 
+width:100%; 
+display: inline-block;
+}
+
+.submit_btn {
+  	padding: 10px;
+    background-color: #415E86;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: inline-block;
+    margin-bottom: 10px;
+    position:relative;
+    left:12px;
+}
+.submit_btn:hover {
+    transform: scale(1.03);
+}
+
+
+.form_input {
+    font-size: 16px;
+    font-family: inherit;
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: 1px #7a96af solid;
+    background: #fdfdfd;
+    outline: none;
+    width: 100%;
+    transition: all 0.3s;
+}
+
+.botao {
+	display: inline-block;
+	text-decoration: none;
+	top: 30px;
+	position: relative;
+}
+
+a {
+	text-decoration: none;
+	color:rgb(255, 255, 255);
+	}
+
+input:checked {
+  border: 6px solid #415E86;
+}
+
+.nivelacesso {
+	position: relative;
+	width: 300px;
+	height: 30px;
+	display: flex;
+  	align-items: flex-start;
+  	margin-bottom: 5px;
+  	left: 12px;
+  	border: 1px solid #7a96af;
+  	border-radius:5px;
+}
+
+.radio {
+  appearance: none;
+ margin: 2px;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
+}
+
+.radio2 {
+  margin: 2px;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  margin-left: 15px;
+
+  position: relative;
+  top: 4px;
+}
+
+.statusfunc {
+	border-radius:5px;
+	border: 1px solid #7a96af;
+	position: relative;
+	width: 340px;
+	height: 30px;
+	display: flex;
+  	align-items: flex-start;
+  	margin-bottom: 5px;
+  	left: 400px;
+  	bottom: 60px;
+  	
+}
+
+p {
+ font-size: 20px;
+ position: relative;
+ left: 10px;
+}
+
+.label {
+	margin: 3px;
+}
+
+.titulo2 {
+	 font-size: 20px;
+ position: relative;
+ left: 400px;
+ bottom: 60px;
+}
+
+.butCancelar {
+	position: relative;
+	left: 160px;
+	bottom: 63px;
+}
+
+
+.but {
+	position: relative;
+	bottom: 30px;
+}
+

@@ -1,0 +1,99 @@
+body {
+    width: 1890px;
+    overflow: hidden;
+  }
+  
+  .container {
+    display: flex;
+    height: 945px;
+  }
+  
+  .branco {
+    flex: 1;
+    background-image: url(/imagens/purgatologo.png) ;
+	background-repeat: no-repeat; 
+	background-position: left 17% top 50%;
+    background-attachment: fixed;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .azul {
+    flex: 1;
+    height: 100%;
+    background-color: #415E86;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 20px;
+    width: 50%;
+    transform: skewX(-10deg);
+ 	transition: 1000ms linear; 
+  }
+  
+  .azul:hover{
+	     box-shadow: 0px 0px 1000px rgb(166, 185, 202);
+  }
+  
+  form {
+	transform: none;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 10px;
+  }
+  
+  input {
+    font-size: 25px;
+    padding: 18px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    width: 400px;
+    border: 1px solid #7a96af;
+ 	transition: 100ms linear; 
+  }
+  
+  input:hover {
+    box-shadow: 0px 0px 10px rgb(166, 185, 202);
+  }
+  
+   input:focus {
+   outline: none;
+   box-shadow: 0px 0px 10px rgb(166, 185, 202);
+}
+  
+  .senha:hover {
+    box-shadow: 0px 0px 10px rgb(166, 185, 202);
+  }
+  
+  .botao {
+    padding: 10px;
+    background-color: rgb(84, 113, 139);
+    color: white;
+    width: 440px;
+    border: 1px solid white;
+    border-radius: 10px;
+    font-size: 24px;
+      transition: 100ms linear; 
+  }
+  
+  .logo {
+    position: relative;
+    left: 25%;
+    top: 20%;
+    width: 26px;
+    height: 100px;
+  }
+  
+  .botao:hover {
+    border: 1px solid white;
+  box-shadow: 0px 0px 10px rgb(166, 185, 202);
+  }
+  
+  
+ .formulario {
+	    transform: skewX(10deg);
+ }

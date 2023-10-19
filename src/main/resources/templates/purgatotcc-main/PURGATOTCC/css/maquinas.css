@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    font-family:sans-serif
+    }
+
+    body {
+    background-color: aliceblue;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    }
+
+    .user {
+    font-family: sans-serif;
+    position: relative;
+    left: 35px;
+    top: 35px;
+    }
+
+    nav {
+    height: 100%;
+    max-width: 270px;
+    background-color: #b6cae4;
+    color: aliceblue;
+    position: fixed;
+    }
+
+    nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    top: 150px;
+    }
+
+    nav ul li {
+    background-color: #b6cae4;
+    font-size: 30px;
+    border-top: 2px solid aliceblue;
+    }
+
+    nav ul li :hover {
+    background-color: #7a96af;
+    }
+
+    nav ul li a {
+    background-color: #b6cae4;
+    padding: 10px;
+    display: block;
+    color: #f0f8ff;
+    text-decoration: none;
+    }
+
+    .ultima {
+    border-bottom: 2px solid aliceblue;
+    }
+
+    .container{
+    border-radius: 5px;
+    height: 860px;
+    width: 800px;
+    position: fixed;
+    left: 280px;
+    top: 39px;
+    }
+
+    input {
+    padding: 3px;
+    border-radius: 5px;
+    width: 750px;
+    border-color: #7a96af;
+    position: relative;
+    left: 10px;
+    font-size: 19px;  
+    }
+
+    label{
+    font-size: 20px;
+    position: relative ;
+    left: 15px;
+    }
+
+    input::placeholder {
+    font-size: 19px;
+    }
+
+    .tabela {
+    padding: 2px;
+    background-color: #000000;
+    color: #f0f8ff;
+    width: 770px;
+    height: 18px;
+    position: relative;
+    left: 10px;
+    top: 10px;
+    display: flex;
+    justify-content: space-between;
+    }
+
+    .logo {
+    position: relative;
+    left: 1150px;
+    top: 70px;
+    width: 100px;
+    height: 100px;
+    color: aliceblue;
+    }
+
+    .num {
+    position: relative;
+    text-align: left;
+    font-size: large;
+    left: 35px;
+    }
+
+    .marca {
+    position:relative;
+    text-align: center;
+    }
+
+    .cond {
+    position:relative;
+    text-align: right;
+    right: 35px;
+    }
+
+    .num1 {
+    position: relative;
+    text-align: left;
+    font-size: larger;
+    left: 35px;
+    }
+
+    .marca1 {
+    position:relative;
+    text-align: center;
+    bottom: 18px;
+    font-size: larger;
+    }
+
+    .cond1 {
+    position:relative;
+    text-align: right;
+    color: forestgreen;
+    bottom: 40px;
+    font-size: 23px;
+    }
+
+    .num2 {
+    position: relative;
+    text-align: left;
+    }
+
+    .marca2 {
+    position:relative;
+    text-align: center;
+    }
+
+    .cond2 {
+    position:relative;
+    text-align: right;
+    color: rgb(150, 15, 15);
+    bottom: 5px;
+    }
+
+
+    .exemplo1 {
+    border: 2px solid #7a96af;
+    border-radius: 5px;
+    padding: 20px;
+    width: 730px;
+    height: 30px;
+    position: relative;
+    top: 26px;
+    left: 10px;
+    font-size: medium;
+    }
+
+    .exemplo2 {
+    border: 2px solid #7a96af;
+    border-radius: 5px;
+    padding: 20px;
+    width: 730px;
+    height: 30px;
+    position: relative;
+    top: 32px;
+    left: 10px;
+    }

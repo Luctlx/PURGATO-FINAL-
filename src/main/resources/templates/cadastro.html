@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>PURGATO</title>
+	<link rel="stylesheet" href="/css/cadastro.css" />
+	<script src="https://kit.fontawesome.com/d7b8ac981d.js" crossorigin="anonymous"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="icon" type="image/png" href="/imagens/purgatologo.png">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+	<script type="text/javascript">
+		$("#telefone").mask("(00) 00000-0000");
+		$("#cpf").mask("000.000.000-00");
+		$("#datanascimento").mask("00/00/0000");
+	</script>
+	<script>
+		$(document).ready(function () {
+			$('#nome').on('keydown', function (event) {
+				// Obtém o código da tecla pressionada
+				var keyCode = event.which;
+
+				// Verifica se a tecla pressionada é uma letra ou tecla de controle
+				if ((keyCode < 65 || keyCode > 90) &&      // letras maiúsculas
+					(keyCode < 97 || keyCode > 122) &&     // letras minúsculas
+					(keyCode !== 8 && keyCode !== 32)) {   // tecla backspace e espaço
+					event.preventDefault(); // Impede a entrada do caractere
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	     <nav>
+      <div class="user">
+        <h1><i class="fa-solid fa-user" style="color: #ffffff"></i> - <span th:text="${session.mUsuario.nivel_acesso}"></span> </h1>
+        <p><h6> <span th:text="${session.mUsuario.nome}"></span></h6></p>
+        </div>
+            <div class="lista">
+			<ul>
+				<li>
+					<a th:href="@{/api/login/telainicial}"><i class="fa-sharp fa-solid fa-house"
+							style="color: #ffffff"></i> Início</a>
+				</li>
+				<li>
+					<a th:href="@{/api/cliente/telacliente}"><i class="fa-solid fa-user" style="color: #ffffff"></i>
+						Clientes</a>
+				</li>
+				<li>
+					<a th:href="@{/api/Maquinas/telaalugueis}"><i class="fa-solid fa-wand-magic-sparkles"
+							style="color: #ffffff"></i> Aluguéis</a>
+				</li>
+				<li>
+					<a th:href="@{/api/usuario/telafuncionario}"><i class="fa-solid fa-user-group"
+							style="color: #ffffff"></i> Funcionários</a>
+				</li>
+				<li>
+					<a th:href="@{/api/promocao/telapromocoes}"><i class="fa-solid fa-star"
+							style="color: #ffffff;"></i></i> Promoções</a>
+				</li>
+				<li>
+					<div class="ultima">
+						<a th:href="@{/api/login/index}"><i class="fa-solid fa-right-to-bracket"
+								style="color: #ffffff;"></i> Sair</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+    </nav>
+		<div class="container_form">
+
+
+			<h1>Cadastrar cliente</h1>
+			<form class="form" th:action="@{/api/cliente/gravar}" method="post" th:object="${cliente}">
+				<div class="form_grupo">
+					<label for="nome" class="form_label">Nome</label>
+					<input type="text" name="nome" class="form_input" id="nome" placeholder="Insira seu nome" required
+						th:field="*{nome}">
+				</div>
+				<div class="form_grupo">
+					<label for="cpf" class="form_label">CPF</label>
+					<input type="text" name="cpf" class="form_input" id="cpf" placeholder="XXX.XXX.XXX-XX" required
+						th:field="*{cpf}">
+				</div>
+				<div class="form_grupo">
+					<label for="telefone" class="form_label">Telefone</label>
+					<input type="text" name="telefone" class="form_input" id="telefone" placeholder="(XX) XXXXX-XXXX"
+						required th:field="*{telefone}">
+				</div>
+				<div class="form_grupo">
+					<label for="email" class="form_label">Email</label>
+					<input type="email" name="email" class="form_input" id="email" placeholder="email@seuemail.com"
+						required th:field="*{email}">
+				</div>
+
+				<div class="botao">
+					<div class="butCadastrar">
+						<input type="hidden" name="cancelar" value="cancelar">
+						<button type="submit" name="Submit" class="submit_btn">Cadastrar</button>
+					</div>
+					<div class="butCancelar">
+						<input type="hidden" name="acao" value="enviar">
+						<button type="button" action="Submit" class="submit_btn"><a
+								th:href="@{/api/cliente/telacliente}">Cancelar</button>
+						<div>
+						</div>
+			</form>
+		</div>
+		<!--container_form-->
+</body>
+
+</html>

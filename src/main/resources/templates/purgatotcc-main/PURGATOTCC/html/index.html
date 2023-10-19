@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="icon" type="image/png" href="../imagens/purgatologo.png">
+  <title>PURGATO - SISTEMA DE LAVANDERIA</title>
+</head>
+<body>
+  <div class="container">
+    <div class="branco">
+      <div class="logo">
+        <img src="../imagens/purgatologo.png" alt="Purgato Logo">
+      </div>
+    </div>
+    <div class="azul">
+      <form>
+        <form method="POST" action="../ligarbanco.php">
+        <input type="text" id="usuario" name="usuario" placeholder="Usuário..." class="usuario">
+        <input type="password" id="senha" name="senha" placeholder="Senha..." class="senha">
+        <br> <br>
+        <button type="submit" id="submit" name="submit" class="botao" value="Entrar">Entrar</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    font-family:sans-serif
+    }
+
+    body {
+	background-image: url(/imagens/purgatologo.png) ;
+	background-repeat: no-repeat; 
+	background-position: center;
+    background-color: white;
+    background-attachment: fixed;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    }
+
+    .user {
+    font-family: sans-serif;
+    position: relative;
+    margin: 10px 0 0 18px;
+    }
+
+    nav {
+    height: 100%;
+    max-width: 227px;
+    background-color: #415E86;
+    color: aliceblue;
+    position: fixed;
+    }
+
+    nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: inline-block;
+    position: relative;
+    top: 150px;
+    font-size: 28px;
+    }
+
+    nav ul li {
+    background-color: #415E86;
+    border-top: 2px solid aliceblue;
+    }
+
+    nav ul li :hover {
+    background-color: #7a96af;
+    box-shadow: 0px 0px 10px rgb(166, 185, 202);
+    }
+    
+    
+
+    nav ul li a {
+    background-color: #415E86;
+    padding: 10px;
+    display: block;
+    color: #f0f8ff;
+    text-decoration: none;
+    }
+
+    .ultima {
+    border-bottom: 2px solid aliceblue;
+    }
+	.container {
+		width: 800px;
+		height: 400px;
+		position: relative;
+		left : 360px;
+		top: 70px;
+	    font-family: 'Poppins', sans-serif;	
+	}
+ 	.bemvindo {	
+		 color: #415E86;
+		 font-size: 102px;
+		 	 
+ 	}
+ 	
+ 	.bemvindo1 {	
+		 color: #415E86;
+		 font-size: 40px;
+		 	 
+ 	}
+	
+		 
+	p {
+		position: relative;
+		left: 70px;
+	}
+	.cx {
+		width: 1000px;
+		height: 100px;
+		position: relative;
+		left : 1000px;
+		top: 480px;
+	    font-family: 'Poppins', sans-serif;	
+	    
+	}

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>PURGATO</title>
+	<link rel="stylesheet" href="/css/cliente.css" />
+	<link rel="icon" type="image/png" href="/imagens/purgatologo.png">
+	<link rel="shortcut icon" href="PURGATO_SITELOGO.PNG" type="image">
+	<script src="https://kit.fontawesome.com/d7b8ac981d.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<nav>
+		<div class="user">
+			<h1><i class="fa-solid fa-user" style="color: #ffffff"></i> - <span
+					th:text="${session.mUsuario.nivel_acesso}"></span> </h1>
+			<p>
+			<h6> <span th:text="${session.mUsuario.nome}"></span></h6>
+			</p>
+		</div>
+		<div class="lista">
+			<ul>
+				<li>
+					<a th:href="@{/api/login/telainicial}"><i class="fa-sharp fa-solid fa-house"
+							style="color: #ffffff"></i> Início</a>
+				</li>
+				<li>
+					<a th:href="@{/api/cliente/telacliente}"><i class="fa-solid fa-user" style="color: #ffffff"></i>
+						Clientes</a>
+				</li>
+				<li>
+					<a th:href="@{/api/Maquinas/telaalugueis}"><i class="fa-solid fa-wand-magic-sparkles"
+							style="color: #ffffff"></i> Aluguéis</a>
+				</li>
+				<li>
+					<a th:href="@{/api/usuario/telafuncionario}"><i class="fa-solid fa-user-group"
+							style="color: #ffffff"></i> Funcionários</a>
+				</li>
+				<li>
+					<a th:href="@{/api/promocao/telapromocoes}"><i class="fa-solid fa-star"
+							style="color: #ffffff;"></i></i> Promoções</a>
+				</li>
+				<li>
+					<div class="ultima">
+						<a th:href="@{/api/login/index}"><i class="fa-solid fa-right-to-bracket"
+								style="color: #ffffff;"></i> Sair</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="laranja">
+	</div>
+	<button type="button">
+		<a th:href="@{/api/promocao/cadastropromocoes}"><i class="fa-sharp fa-solid fa-user-plus"
+				style="color: #ffffff"></i>
+			Cadastrar Cliente</a>
+	</button>
+	<div class="container">
+		<label for="pesquisa" class="promo"> Promoções </label>
+		<button type="button">
+			<a th:href="@{/api/promocao/cadastropromocoes}"><i class="fa-sharp fa-solid fa-user-plus"
+					style="color: #ffffff"></i>
+				Cadastrar Promoções</a>
+		</button>
+		<div class="cards">
+
+
+			<!--    <div class="promocao" >
+       <div class="imagem"> </div>
+      	<h3> Novo usuário </h3>
+      	 <div class="codigo">10/11/2023</div>
+	      	<div class="conteudo">
+	      		<p> Pague pela metade do preço sua primeira lavagem como novo usuario da Lavanderia Purgato App </p>
+	      	</div>
+     	</div> -->
+
+			<div class="promocao" th:each="promocao : ${promocoes}">
+				<div class="imagem"> </div>
+				<h3><span th:text="${promocao.nome}"></span></h3>
+				<div class="codigo"><span th:text="${promocao.data_validade}"></span></div>
+				<div class="conteudo">
+					<p><span th:text="${promocao.descricao}"></span> </p>
+				</div>
+				<div class="crud">
+						<form th:action="@{/api/promocao/controlePromocao/{id}(id=${promocao.id})}" method="post">
+							<button type="submit" class="estiloBotao">
+								<i class="fas fa-times tamIcone"></i>
+							</button>
+						</form>
+						<button class="botaoAbrirMenu" th:id="${promocao.id}">
+							<i class="fas fa-pencil-alt tamIcone"></i>
+
+						</button>
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+<!-- Botão para abrir o modal -->
+
+<div id="myModal" class="modal">
+
+	<div class="modal-content">
+
+		<span class="close-button" id="closeModalButton">&times;</span>
+
+		<div class="modal-title">Perfil do Usuario</div>
+
+		<form th:action="@{/api/promocao/Admin}" th:object="${promocao}" method="post">
+
+			<div class="input-area">
+
+				<div class="credenciais">
+
+					<div class="lado1">
+
+
+
+						<input type="hidden" id="editId" name="id" th:field="*{id}" placeholder="Nome de usuário"
+							style="display: none;" required>
+
+
+
+						<p class="textUpadte">Título: </p>
+
+						<input type="text" id="editNome" name="nome" th:field="*{nome}" class="campoDeFormulario"
+							required><br>
+
+
+
+						<p class="textUpadte">Descricao: </p>
+
+						<input type="text" id="editDescricao" name="descricao" th:field="*{descricao}"
+							class="campoDeFormulario" required><br>
+
+
+
+
+						<p class="textUpadte">Preco: </p>
+
+						<input type="text" id="editPreco" name="editPreco" th:field="*{preco}" class="campoDeFormulario"
+							required><br>
+
+
+
+
+
+
+
+
+					</div>
+
+
+
+					<div class="lado2">
+
+
+						<p class="textUpadte">Data de validade: </p>
+
+						<input type="text" id="editData_validade" name="data_validade" th:field="*{data_validade}"
+							class="campoDeFormulario" required><br>
+					</div>
+				</div>
+			</div>
+
+			<div class="button-area">
+
+				<button id="cancelButton" type="button">Cancelar</button>
+
+				<button id="saveButton" type="submit">Salvar</button>
+
+			</div>
+
+		</form>
+
+	</div>
+</div>
+<script th:inline="javascript">
+
+	console.log("aqui")
+	var openModalButtons = document.querySelectorAll(".botaoAbrirMenu");
+
+	var modal = document.getElementById("myModal");
+
+	openModalButtons.forEach(function (button) {
+
+		button.onclick = function () {
+
+
+
+			var promocoes = /*[[${promocoes}]]*/[];
+
+			var idPromocao = button.getAttribute("id")
+
+			var editId = document.getElementById("editId");
+
+			var editNome = document.getElementById("editNome");
+
+			var editDescricao = document.getElementById("editDescricao");
+
+			var editPreco = document.getElementById("editPreco");
+
+
+
+
+
+			// Supondo que 'clientes' seja um array de objetos de cliente
+
+			for (var i = 0; i < promocoes.length; i++) {
+
+				var promocao = promocoes[i];
+
+				console.log(idPromocao);
+
+
+
+
+				// Aqui, 'cliente' é um objeto que representa um cliente individual
+
+				// Você pode acessar as propriedades do cliente, por exemplo:
+
+				var id = promocao.id
+
+				var nome = promocao.nome;
+
+				var descricao = promocao.descricao;
+
+				var preco = promocao.preco;
+
+				var data_validade = promocao.data_validade;
+
+
+				if (idPromocao == promocao.id) {
+
+					editId.value = id;
+
+					editNome.value = nome;
+
+					editDescricao.value = descricao;
+
+					editPreco.value = preco;
+
+					editData_validade.value = data_validade;
+				}
+
+				// Faça o que você precisa com os dados do cliente dentro do loop
+
+
+
+
+
+
+
+
+
+
+
+
+			}
+
+			// Faça uma solicitação AJAX para buscar informações do cliente com o ID
+
+
+
+			modal.style.display = "block";
+
+			console.log("a")
+
+		}
+
+	});
+
+
+
+
+
+
+
+
+
+	// Função para fechar o modal
+
+	document.getElementById("closeModalButton").onclick = function () {
+
+		modal.style.display = "none";
+
+	}
+
+
+
+	// Função para cancelar
+
+	document.getElementById("cancelButton").onclick = function () {
+
+		modal.style.display = "none";
+
+	}
+
+
+
+
+
+
+
+
+	var modalContent = document.querySelector(".modal-content");
+
+
+
+	// Quando o usuário clicar fora do modal, feche-o
+
+	modal.addEventListener("click", function (event) {
+
+		if (event.target === modal) {
+
+			modal.style.display = "none";
+
+		}
+
+	});
+</script> -->
+
+</html>

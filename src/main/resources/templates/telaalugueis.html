@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>PURGATO</title>
+	<link rel="stylesheet" href="/css/aluguel.css" />
+	<link rel="icon" type="image/png" href="/imagens/purgatologo.png">
+	<link rel="shortcut icon" href="PURGATO_SITELOGO.PNG" type="image">
+	<script src="https://kit.fontawesome.com/d7b8ac981d.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<nav>
+		<div class="user">
+			<h1><i class="fa-solid fa-user" style="color: #ffffff"></i> - <span
+					th:text="${session.mUsuario.nivel_acesso}"></span> </h1>
+			<p>
+			<h6> <span th:text="${session.mUsuario.nome}"></span></h6>
+			</p>
+		</div>
+		<div class="lista">
+			<ul>
+				<li>
+					<a th:href="@{/api/login/telainicial}"><i class="fa-sharp fa-solid fa-house"
+							style="color: #ffffff"></i> Início</a>
+				</li>
+				<li>
+					<a th:href="@{/api/cliente/telacliente}"><i class="fa-solid fa-user" style="color: #ffffff"></i>
+						Clientes</a>
+				</li>
+				<li>
+					<a th:href="@{/api/Maquinas/telaalugueis}"><i class="fa-solid fa-wand-magic-sparkles"
+							style="color: #ffffff"></i> Aluguéis</a>
+				</li>
+				<li>
+					<a th:href="@{/api/usuario/telafuncionario}"><i class="fa-solid fa-user-group"
+							style="color: #ffffff"></i> Funcionários</a>
+				</li>
+				<li>
+					<a th:href="@{/api/promocao/telapromocoes}"><i class="fa-solid fa-star"
+							style="color: #ffffff;"></i></i> Promoções</a>
+				</li>
+				<li>
+					<div class="ultima">
+						<a th:href="@{/api/login/index}"><i class="fa-solid fa-right-to-bracket"
+								style="color: #ffffff;"></i> Sair</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="laranja">
+	</div>
+	<div class="container">
+		<label for="pesquisa" class="estilinho"> Aluguéis </label>
+		<button type="button" class="estilinho">
+			<a th:href="@{/api/Maquinas/cadastromaquina}"><i class="fa-sharp fa-solid fa-user-plus"
+					style="color: #ffffff"></i>
+				Adicionar máquinas</a>
+		</button>
+
+		<!--- CARD DE MÁQUINA "DISPONÍVEL" -->
+
+
+		<div class="cards">
+    <div class="card" th:each="maquina : ${maquinasD}">
+        <div class="container6">
+            <!-- ... -->
+            <div class="content">
+                <h4><b><span th:text="*{maquina.disponibilidade}"></span></b></h4>
+                <p>Marca da máquina: <span th:text="*{maquina.marca}"></span></p>
+                <p>Capacidade: <span th:text="*{maquina.capacidade}"></span></p>
+                <p>ID: <span th:text="*{maquina.id}"></span></p>
+            </div>
+        </div>
+    	</div>
+
+
+
+			<!--- CARD DE MÁQUINA "INDISPONÍVEL" -->
+
+
+			<div class="card" th:each="maquina : ${maquinasI}">
+				<div class="container6">
+					<div class="maqVermelha">
+
+						<!-- BOTÃO DE EXCLUIR CLIENTES NA TABELA ALUGUEL -->
+						<button type="button" class=butVermelho>FINALIZAR</button>
+
+
+						<!-- BOTÃO DE EXCLUIR MÁQUINA -->
+						<form th:action="@{/api/maquina/controleMaquina/{id}(id=${maquina.id})}" method="post">
+							<button type="submit" class="butVermelho">
+								<i class="fas fa-times tamIcone"></i>
+							</button>
+
+						</form>
+
+						<div class="contentred">
+							<!-- <h4><b><span th:text="*{maquina.maquina.disponibilidade}"></span> </b></h4> -->
+							<p>Nome do cliente: <span th:text="*{maquina.cliente.nome}"></span></p>
+							<p>Valor: <span th:text="*{maquina.preco}"></span></p>
+							<p>Data: <span th:text="*{maquina.data_lavagem}"></span></p>
+							<p>Marca da máquina: <span th:text="*{maquina.maquina.marca}"></span></p>
+							<p>Capacidade: <span th:text="*{maquina.maquina.capacidade}"></span></p>
+							<p>ID: <span th:text="*{maquina.id}"></span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+
+</html>

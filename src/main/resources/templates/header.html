@@ -1,0 +1,38 @@
+<header th:fragment="header" class="container">
+        <nav>
+      <div class="user">
+        <h1><i class="fa-solid fa-user" style="color: #ffffff"></i> - <span th:text="${session.mUsuario.nivel_acesso}"></span> </h1>
+        <p><h6> <span th:text="${session.mUsuario.nome}"></span></h6></p>
+        </div>
+            <div class="lista">
+			<ul>
+				<li>
+					<a th:href="@{/api/login/telainicial}"><i class="fa-sharp fa-solid fa-house"
+							style="color: #ffffff"></i> Início</a>
+				</li>
+				<li>
+					<a th:href="@{/api/cliente/telacliente}"><i class="fa-solid fa-user" style="color: #ffffff"></i>
+						Clientes</a>
+				</li>
+				<li>
+					<a th:href="@{/api/Maquinas/telaalugueis}"><i class="fa-solid fa-wand-magic-sparkles"
+							style="color: #ffffff"></i> Aluguéis</a>
+				</li>
+				<li>
+					<a th:href="@{/api/usuario/telafuncionario}"><i class="fa-solid fa-user-group"
+							style="color: #ffffff"></i> Funcionários</a>
+				</li>
+				<li>
+					<a th:href="@{/api/promocao/telapromocoes}"><i class="fa-solid fa-star"
+							style="color: #ffffff;"></i></i> Promoções</a>
+				</li>
+				<li>
+					<div class="ultima">
+						<a th:href="@{/api/login/index}"><i class="fa-solid fa-right-to-bracket"
+								style="color: #ffffff;"></i> Sair</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+    </nav>
+</header>
